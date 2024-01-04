@@ -1,10 +1,10 @@
-#
+# -*- coding: utf-8 -*-
 from mediapipe.tasks.python.vision.hand_landmarker import HandLandmarkerResult
 
 
-def get_row_for_model(det_result: HandLandmarkerResult):
-    hand_landmarks = det_result.hand_landmarks[0]
-    handedness = det_result.handedness[0]
+def get_row_for_model(detection_result: HandLandmarkerResult):
+    hand_landmarks = detection_result.hand_landmarks[0]
+    handedness = detection_result.handedness[0]
     ret_dict = dict()
     row_lst = []
 

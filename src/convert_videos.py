@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os.path
 
 import numpy as np
@@ -67,4 +68,3 @@ def convert_video(path: str, path_to_save_dir: str):
     # close the video writer
     out.release()
     print("The video was successfully saved")
-

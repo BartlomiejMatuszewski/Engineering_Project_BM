@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import enum
 
 
@@ -11,7 +12,7 @@ class GestureNumber(enum.Enum):
     BLOCK = 6
 
 
-def gesture_category(filename: str = "maciej_point_up.avi"):
+def gesture_category(filename: str):
     splitted_name = filename.split("_")
     name_avi = ""
 

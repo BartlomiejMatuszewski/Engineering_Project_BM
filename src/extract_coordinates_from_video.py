@@ -10,16 +10,12 @@ from mediapipe.framework.formats import landmark_pb2
 from GestureNumber import GestureNumber
 
 
-########################################################################################################################
-
-
-def extract_coordinates_from_video(
-        video_path,
-        category: GestureNumber = GestureNumber.POINT_UP,
-        model_path=os.path.join("../models/hand_landmarker.task"),
-        output_dir=os.path.join("../csv_data"),
-        output_name="default_name"
-):
+def extract_coordinates_from_video(video_path,
+                                   category: GestureNumber = GestureNumber.POINT_UP,
+                                   model_path=os.path.join("../models/hand_landmarker.task"),
+                                   output_dir=os.path.join("../csv_data"),
+                                   output_name="default_name"
+                                   ):
     # for clarity
     BaseOptions = mp.tasks.BaseOptions
     HandLandmarker = mp.tasks.vision.HandLandmarker

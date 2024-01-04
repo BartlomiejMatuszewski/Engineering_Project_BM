@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import threading
 
 from detect_hand_gesture import detect_hand_gesture

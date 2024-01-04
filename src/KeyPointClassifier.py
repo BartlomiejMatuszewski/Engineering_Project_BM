@@ -8,18 +8,17 @@ import tensorflow as tf
 class KeyPointClassifier(object):
     def __init__(
             self,
-            model_path=os.path.join("../trained_models/tflite_models/model1.tflite"),
-            threads=1
+            model_path: str = os.path.join("../trained_models/tflite_models/model1.tflite"),
+            threads: int = 1
     ):
         self.interpreter = tf.lite.Interpreter(model_path=model_path, num_threads=threads)
         self.interpreter.allocate_tensors()
         self.input_details = self.interpreter.get_input_details()
         self.output_details = self.interpreter.get_output_details()
 
-    def __call__(
-            self,
-            landmark_list,
-    ):
+    def __call__(self,
+                 landmark_list,
+                 ):
         input_details_tensor_index = self.input_details[0]['index']
 
         self.interpreter.set_tensor(

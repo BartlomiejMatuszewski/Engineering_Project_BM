@@ -1,4 +1,4 @@
-#
+# -*- coding: utf-8 -*-
 import os
 import sys
 import time
@@ -26,6 +26,7 @@ def detect_hand_gesture(mp_model_path: str = os.path.join("../frameworks_models/
                         camera_id: int = 0,
                         gesture_buffor: int = 10
                         ):
+    #
     cap = cv2.VideoCapture(camera_id)
     DETECTION_RESULT = None
     RESULTS_LIST: list = []
