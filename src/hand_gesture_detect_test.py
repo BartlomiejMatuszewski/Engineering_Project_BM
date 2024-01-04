@@ -1,5 +1,3 @@
-
-import argparse
 import os.path
 import sys
 import time
@@ -11,8 +9,7 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 from mediapipe.framework.formats import landmark_pb2
 
-from utilities import get_row_for_model, KeyPointClassifier
-from src import GestureNumber
+from src import GestureNumber, KeyPointClassifier, get_row_for_model
 
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
@@ -69,9 +66,8 @@ def run_inference(model_path: str,
         result_callback=save_result
     )
 
-    path1 = os.path.join("trained_models/tf_models/model1.tflite")
-    path2 = os.path.join("trained_models/tf_models/model2.tflite")
-
+    path1 = os.path.join("../trained_models/tflite_models/model1.tflite")
+    path2 = os.path.join("../trained_models/tflite_models/model2.tflite")
 
     detector: vision.HandLandmarker = vision.HandLandmarker.create_from_options(options)
     classificator = KeyPointClassifier.KeyPointClassifier(model_path=path1)
@@ -160,7 +156,7 @@ def run_inference(model_path: str,
 
 
 def main():
-    model_path = os.path.join("mp_models/hand_landmarker.task")
+    model_path = os.path.join("../frameworks_models/hand_landmarker.task")
     number_of_hands: int = 1
 
     min_hand_detection_confidence: float = 0.5

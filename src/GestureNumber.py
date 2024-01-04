@@ -21,7 +21,6 @@ def gesture_category(filename: str = "maciej_point_up.avi"):
         name_avi += "_"
         name_avi += it
 
-
     splitted_name = name_avi.split(".")
     name: str = splitted_name[0]
 
@@ -36,6 +35,4 @@ def gesture_category(filename: str = "maciej_point_up.avi"):
 
     return output
 
-
 # print(GestureNumber(gesture_category()))
-

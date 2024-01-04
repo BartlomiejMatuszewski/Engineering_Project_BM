@@ -1,22 +1,16 @@
-import datetime
 import os
-import sys
 import time
-import argparse
 
-import numpy as np
 import pandas as pd
 import cv2
 import mediapipe as mp
 from mediapipe.tasks import python
-from mediapipe.tasks.python import vision
 from mediapipe.framework.formats import landmark_pb2
 
 from GestureNumber import GestureNumber
 
 
 ########################################################################################################################
-
 
 
 def extract_coordinates_from_video(
@@ -172,4 +166,3 @@ def extract_coordinates_from_video(
     capture.release()
     landmarker.close()
     cv2.destroyAllWindows()
-
