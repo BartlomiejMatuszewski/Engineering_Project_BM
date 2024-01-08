@@ -1,4 +1,5 @@
 .idea
+src\__pycache__
 tree.txt
 csv_data
 full_csv_data
