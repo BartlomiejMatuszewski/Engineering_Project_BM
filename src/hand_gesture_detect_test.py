@@ -68,7 +68,7 @@ def run_inference(model_path: str,
     )
 
     path1 = os.path.join("../trained_models/tflite_models/model1.tflite")
-    path2 = os.path.join("../trained_models/tflite_models/model2.tflite")
+    path2 = os.path.join("../trained_models/tflite_models/gesture_recognizer.tflite")
 
     detector: vision.HandLandmarker = vision.HandLandmarker.create_from_options(options)
     classificator = KeyPointClassifier.KeyPointClassifier(model_path=path1)
