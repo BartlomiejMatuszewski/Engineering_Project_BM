@@ -67,8 +67,8 @@ def run_inference(model_path: str,
         result_callback=save_result
     )
 
-    path1 = os.path.join("../trained_models/tflite_models/model1.tflite")
-    path2 = os.path.join("../trained_models/tflite_models/gesture_recognizer.tflite")
+    path1 = os.path.join("../trained_dnn_models/tflite_models/model1.tflite")
+    path2 = os.path.join("../trained_dnn_models/tflite_models/gesture_recognizer.tflite")
 
     detector: vision.HandLandmarker = vision.HandLandmarker.create_from_options(options)
     classificator = KeyPointClassifier.KeyPointClassifier(model_path=path1)
@@ -157,7 +157,7 @@ def run_inference(model_path: str,
 
 
 def main():
-    model_path = os.path.join("../frameworks_models/hand_landmarker.task")
+    model_path = os.path.join("../frameworks_dnn_models/hand_landmarker.task")
     number_of_hands: int = 1
 
     min_hand_detection_confidence: float = 0.5

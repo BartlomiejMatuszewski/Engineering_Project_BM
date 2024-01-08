@@ -7,7 +7,7 @@ from vosk import Model, KaldiRecognizer
 from VoiceCommandNumber import VoiceCommandNumber
 
 
-def recognise_speech_command(model_path: str = os.path.join("../frameworks_models/polish")):
+def recognise_speech_command(model_path: str = os.path.join("../frameworks_dnn_models/polish")):
     model = Model(model_path=os.path.join(model_path))
     recognizer = KaldiRecognizer(model, 16000)
 
@@ -44,4 +44,4 @@ def recognise_speech_command(model_path: str = os.path.join("../frameworks_model
 
 
 if __name__ == '__main__':
-    recognise_speech_command(model_path=os.path.join("../frameworks_models/polish"))
+    recognise_speech_command(model_path=os.path.join("../frameworks_dnn_models/polish"))

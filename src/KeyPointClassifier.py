@@ -8,7 +8,7 @@ import tensorflow as tf
 class KeyPointClassifier(object):
     def __init__(
             self,
-            model_path: str = os.path.join("../trained_models/tflite_models/model1.tflite"),
+            model_path: str = os.path.join("../trained_dnn_models/tflite_models/model1.tflite"),
             threads: int = 1
     ):
         self.interpreter = tf.lite.Interpreter(model_path=model_path, num_threads=threads)

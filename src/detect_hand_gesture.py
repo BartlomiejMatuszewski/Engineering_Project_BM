@@ -17,8 +17,8 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 
 
-def detect_hand_gesture(mp_model_path: str = os.path.join("../frameworks_models/hand_landmarker.task"),
-                        tflite_model_path: str = os.path.join("../trained_models/tflite_models/model1.tflite"),
+def detect_hand_gesture(mp_model_path: str = os.path.join("../frameworks_dnn_models/hand_landmarker.task"),
+                        tflite_model_path: str = os.path.join("../trained_dnn_models/tflite_models/model1.tflite"),
                         number_of_hands: int = 1,
                         min_hand_detection_confidence: float = 0.5,
                         min_hand_presence_confidence: float = 0.5,
