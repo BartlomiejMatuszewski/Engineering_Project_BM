@@ -149,7 +149,7 @@ def extract_coordinates_from_video(video_path,
                                            label_background_color)
 
         recognition_frame = current_frame
-        # FIXME: recognition_result_list = [] , chyba
+
         recognition_result_list.clear()
 
         if recognition_frame is not None:

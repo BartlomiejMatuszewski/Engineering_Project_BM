@@ -4,7 +4,7 @@ import os.path
 import numpy as np
 import cv2
 
-
+# function for converting video from mp4 to avi
 def convert_video(path: str, path_to_save_dir: str):
     filename = path
 

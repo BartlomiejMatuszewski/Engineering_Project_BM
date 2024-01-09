@@ -21,6 +21,9 @@ START_TIME = time.time()
 DETECTION_RESULT = None
 
 
+# based on mediapipe examples from
+# https://github.com/googlesamples/mediapipe/tree/main/examples/hand_landmarker/raspberry_pi
+# and https://github.com/googlesamples/mediapipe/tree/main/examples/gesture_recognizer/raspberry_pi
 def run_inference(model_path: str,
                   number_of_hands: int,
                   min_hand_detection_confidence: float,

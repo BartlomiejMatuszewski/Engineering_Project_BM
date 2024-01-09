@@ -24,21 +24,25 @@ def detect_hand_gesture(mp_model_path: str = os.path.join("../frameworks_dnn_mod
                         min_hand_presence_confidence: float = 0.5,
                         min_tracking_confidence: float = 0.5,
                         camera_id: int = 0,
-                        gesture_buffor: int = 10
+                        gesture_buffor: int = 10 # defines length of buffer
                         ):
-    #
+    # we need to specify number of camera from which we take video signal
     cap = cv2.VideoCapture(camera_id)
     DETECTION_RESULT = None
+    # buffer for gestures
     RESULTS_LIST: list = []
 
+    # utility function, used for most common gesture in buffer, buffer takes k gesture detection form k last frames
+    # gesture most common is chosen as detected
     def most_common(lst: list):
         return max(set(lst), key=lst.count)
 
+    # callback function,
     def save_result(result: vision.HandLandmarkerResult,
                     unused_output_image: mp.Image,
                     timestamp: int
                     ):
-
+        # thanks to 'nonlocal' you can take variable from outer scope function
         nonlocal DETECTION_RESULT
 
         DETECTION_RESULT = result
@@ -52,13 +56,16 @@ def detect_hand_gesture(mp_model_path: str = os.path.join("../frameworks_dnn_mod
         min_hand_detection_confidence=min_hand_detection_confidence,
         min_hand_presence_confidence=min_hand_presence_confidence,
         min_tracking_confidence=min_tracking_confidence,
-        result_callback=save_result
+        result_callback=save_result # callback function, called after landmarks recognition
     )
 
+    # initializing mediapipe model for landmarks
     handlandmarker: vision.HandLandmarker = vision.HandLandmarker.create_from_options(options)
+    # initializing gesture recognizer
     classificator: KeyPointClassifier = KeyPointClassifier(model_path=tflite_model_path)
 
     while cap.isOpened():
+        # reading frame
         success, bgr_image = cap.read()
 
         if not success:
@@ -75,10 +82,14 @@ def detect_hand_gesture(mp_model_path: str = os.path.join("../frameworks_dnn_mod
         # Run hand landmarker using the model.
         handlandmarker.detect_async(mp_image, time.time_ns() // 1_000_000)
 
+        # detection result may be not none but is empty and program crashes
         if DETECTION_RESULT is not None and len(DETECTION_RESULT.hand_landmarks) > 0:
+            # getting x and y parts of coordinates
             row = get_row_for_model(DETECTION_RESULT)["row"]
+            # gesture recognizer inference
             my_model_output = classificator(row)
 
+            # if buffer gets full, returning results
             if len(RESULTS_LIST) >= gesture_buffor:
 
                 most_common_gesture = most_common(RESULTS_LIST)

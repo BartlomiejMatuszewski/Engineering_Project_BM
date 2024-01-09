@@ -5,6 +5,7 @@ import numpy as np
 import tensorflow as tf
 
 
+# programming API for tensorflow lite (.tflite) trained DNN model
 class KeyPointClassifier(object):
     def __init__(
             self,

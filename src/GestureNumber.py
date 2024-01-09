@@ -2,6 +2,7 @@
 import enum
 
 
+#  defining gestures and number
 class GestureNumber(enum.Enum):
     NEUTRAL = 0
     POINT_UP = 1
@@ -12,6 +13,8 @@ class GestureNumber(enum.Enum):
     BLOCK = 6
 
 
+# utility function for getting number from gesture name, used in data preparation
+# i needed category number based on name in video name (<person name>_<gesture name>.avi)
 def gesture_category(filename: str):
     splitted_name = filename.split("_")
     name_avi = ""

@@ -2,6 +2,7 @@
 import enum
 
 
+# enum for voice commands
 class VoiceCommandNumber(enum.Enum):
     NEUTRAL = 0
     FIRE = 1
